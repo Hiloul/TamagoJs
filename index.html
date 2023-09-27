@@ -13,10 +13,28 @@
             <div class="name">
                 <input type="text" id="tamagotchiName" placeholder="Entrer un nom">
                 <button onclick="setName()">Nommer</button>
+                <span id="warning"></span>
             </div>
-            <h1 id="displayedName">Mon Tamagotchi</h1>
+            <h1 id="displayedName">Mon Tamagotchi </h1>
+        
             
-            <div id="pet">🐣</div>
+            <div class="choosePet">
+                Choisissez votre animal:
+                <select id="petSelector">
+                    <optgroup label="Animaux">
+                        <option value="🐱">Chat</option>
+                        <option value="🐶">Chien</option>
+                        <option value="🐰">Lapin</option>
+                        <option value="🐻">Ours</option>
+                        <option value="🐣">Poussin</option>
+                        <option value="🐭">Souris</option> 
+                </optgroup>
+                </select>
+                <button onclick="setPet()">Sélectionner</button>
+            </div>
+            <div id="pet">🐣</div> <!-- Valeur par défaut -->
+            
+            
             <div class="stats">
                 <p>Faim: <span id="hunger">100</span>%</p>
                 <p>Bonheur: <span id="happiness">100</span>%</p>
@@ -25,13 +43,14 @@
             </div>
         </div>
         <div class="controls">
-            <button onclick="feed()"><i class="fa-solid fa-pizza-slice"></i></button>
-            <button onclick="play()"><i class="fa-solid fa-table-tennis-paddle-ball"></i></button>
-            <button onclick="heal()"><i class="fa-solid fa-truck-medical"></i></button>
-            <button onclick="wash()"><i class="fa-solid fa-bath"></i></button>
-            <button onclick="quit()"><i class="fa-solid fa-circle-xmark"></i></button>
+            <button onclick="feed()">🍔</button>
+            <button onclick="play()">🎮</button>
+            <button onclick="heal()">🩺</button>
+            <button onclick="wash()">🛁</button>
+            <button onclick="quit()">❌</button>
         </div>
         <!-- <button id="restartButton" onclick="restartGame()" style="display: none;">Redémarrer</button> -->
+        <button id="restartBtn" style="display:none;" onclick="restartGame()">Redémarrer</button>
 
     </div>
     <script src="script.js"></script>
