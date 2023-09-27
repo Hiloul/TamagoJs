@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Tamagotchi</title>
+</head>
+<body>
+    <div class="container">
+        <div class="tamagotchi">
+            <div class="name">
+                <input type="text" id="tamagotchiName" placeholder="Entrer un nom">
+                <button onclick="setName()">Nommer</button>
+            </div>
+            <h1 id="displayedName">Mon Tamagotchi</h1>
+            
+            <div id="pet">🐣</div>
+            <div class="stats">
+                <p>Faim: <span id="hunger">100</span>%</p>
+                <p>Bonheur: <span id="happiness">100</span>%</p>
+                <p>Santé: <span id="health">100</span>%</p>
+                <p>Hygiène: <span id="cleanliness">100</span>%</p>
+            </div>
+        </div>
+        <div class="controls">
+            <button onclick="feed()"><i class="fa-solid fa-pizza-slice"></i></button>
+            <button onclick="play()"><i class="fa-solid fa-table-tennis-paddle-ball"></i></button>
+            <button onclick="heal()"><i class="fa-solid fa-truck-medical"></i></button>
+            <button onclick="wash()"><i class="fa-solid fa-bath"></i></button>
+            <button onclick="quit()"><i class="fa-solid fa-circle-xmark"></i></button>
+        </div>
+        <!-- <button id="restartButton" onclick="restartGame()" style="display: none;">Redémarrer</button> -->
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
