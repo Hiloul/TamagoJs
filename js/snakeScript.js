@@ -199,40 +199,58 @@ document.getElementById("restartGame").addEventListener("click", function () {
   snake.score = 0;
 
   // Gestion mouvements avec tactile
-  let touchStartX = 0;
-let touchStartY = 0;
-
-canvas.addEventListener('touchstart', function(e) {
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-}, false);
-
-canvas.addEventListener('touchend', function(e) {
-  let touchEndX = e.changedTouches[0].clientX;
-  let touchEndY = e.changedTouches[0].clientY;
-  let deltaX = touchEndX - touchStartX;
-  let deltaY = touchEndY - touchStartY;
-
-  if (Math.abs(deltaX) > Math.abs(deltaY)) {
-    // Mouvement horizontal
-    if (deltaX > 0 && snake.dx === 0) { // Déplacement vers la droite
-      snake.dx = grid;
-      snake.dy = 0;
-    } else if (deltaX < 0 && snake.dx === 0) { // Déplacement vers la gauche
-      snake.dx = -grid;
-      snake.dy = 0;
-    }
-  } else {
-    // Mouvement vertical
-    if (deltaY > 0 && snake.dy === 0) { // Déplacement vers le bas
-      snake.dx = 0;
-      snake.dy = grid;
-    } else if (deltaY < 0 && snake.dy === 0) { // Déplacement vers le haut
-      snake.dx = 0;
-      snake.dy = -grid;
-    }
+  function getCanvasCoordinates(touchEvent, canvasElement) {
+    var rect = canvasElement.getBoundingClientRect();
+    var scaleX = canvasElement.width / rect.width;
+    var scaleY = canvasElement.height / rect.height;
+    
+    return {
+      x: (touchEvent.clientX - rect.left) * scaleX,
+      y: (touchEvent.clientY - rect.top) * scaleY
+    };
   }
-}, false);
+  
+  let touchStartX = 0;
+  let touchStartY = 0;
+  
+  canvas.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    var coords = getCanvasCoordinates(e.touches[0], canvas);
+    touchStartX = coords.x;
+    touchStartY = coords.y;
+  }, false);
+  
+  canvas.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    var coords = getCanvasCoordinates(e.changedTouches[0], canvas);
+    let touchEndX = coords.x;
+    let touchEndY = coords.y;
+    let deltaX = touchEndX - touchStartX;
+    let deltaY = touchEndY - touchStartY;
+  
+    const minimumSwipeDistance = 30;
+    
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      // Mouvement horizontal
+      if (deltaX > minimumSwipeDistance && snake.dx === 0) { // Déplacement vers la droite
+        snake.dx = grid;
+        snake.dy = 0;
+      } else if (deltaX < -minimumSwipeDistance && snake.dx === 0) { // Déplacement vers la gauche
+        snake.dx = -grid;
+        snake.dy = 0;
+      }
+    } else {
+      // Mouvement vertical
+      if (deltaY > minimumSwipeDistance && snake.dy === 0) { // Déplacement vers le bas
+        snake.dx = 0;
+        snake.dy = grid;
+      } else if (deltaY < -minimumSwipeDistance && snake.dy === 0) { // Déplacement vers le haut
+        snake.dx = 0;
+        snake.dy = -grid;
+      }
+    }
+  }, false);
+  
 
 
   // Re-positionnez la pomme
