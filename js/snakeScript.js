@@ -19,8 +19,8 @@ var snake = {
 
 // Initialisation de l'objet pomme
 var apple = {
-  x: 224,
-  y: 224,
+  x: 167,
+  y: 167,
 };
 
 // Cette fonction détermine combien de frames nous devons attendre avant de mettre à jour le jeu.
