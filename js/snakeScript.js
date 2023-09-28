@@ -8,8 +8,8 @@ var count = 0;
 
 // Initialisation de l'objet serpent
 var snake = {
-  x: 160,
-  y: 160,
+  x: 192,
+  y: 192,
   dx: grid,
   dy: 0,
   cells: [],
@@ -17,44 +17,10 @@ var snake = {
   score: 0, // Score initial du serpent
 };
 
-let touchStartX = 0;
-let touchStartY = 0;
-canvas.addEventListener('touchstart', function(e) {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-  }, false);
-  canvas.addEventListener('touchend', function(e) {
-    let deltaX = e.changedTouches[0].clientX - touchStartX;
-    let deltaY = e.changedTouches[0].clientY - touchStartY;
-  
-    if (Math.abs(deltaX) > Math.abs(deltaY)) {
-      // Déplacement horizontal
-      if (deltaX > 0 && snake.dx === 0) {
-        snake.dx = grid;
-        snake.dy = 0;
-      } else if (deltaX < 0 && snake.dx === 0) {
-        snake.dx = -grid;
-        snake.dy = 0;
-      }
-    } else {
-      // Déplacement vertical
-      if (deltaY > 0 && snake.dy === 0) {
-        snake.dx = 0;
-        snake.dy = grid;
-      } else if (deltaY < 0 && snake.dy === 0) {
-        snake.dx = 0;
-        snake.dy = -grid;
-      }
-    }
-  }, false);
-    
-
-
-
 // Initialisation de l'objet pomme
 var apple = {
-  x: 320,
-  y: 320,
+  x: 256,
+  y: 256,
 };
 
 // Cette fonction détermine combien de frames nous devons attendre avant de mettre à jour le jeu.
@@ -77,9 +43,11 @@ var gameStarted = false;
 
 // Fonction pour démarrer le jeu
 function startGame() {
-  gameStarted = true;
-  document.getElementById("startGame").style.display = "none"; // Cache le bouton après le démarrage
-}
+    gameStarted = true;
+    document.getElementById("startGame").style.display = "none";
+    document.getElementById("restartGame").style.display = "inline-block";
+    document.getElementById("quitGame").style.display = "inline-block";
+  }  
 
 // Fonction pour jouer le son de manger
 function playEatingSound() {
@@ -94,54 +62,43 @@ function playEatingSound() {
 // Boucle principale du jeu
 function loop() {
   requestAnimationFrame(loop);
-
   // Si le jeu n'a pas encore démarré, on ne fait rien
   if (!gameStarted) {
     return;
   }
-
   // Ralentit la boucle de jeu en fonction du score
   if (++count < getFramesToSkipByScore(snake.score)) {
     return;
   }
-
   count = 0;
   context.clearRect(0, 0, canvas.width, canvas.height);
-
   // Met à jour la position du serpent
   snake.x += snake.dx;
   snake.y += snake.dy;
-
   // Gère le déplacement du serpent à travers les bords
   if (snake.x < 0) {
     snake.x = canvas.width - grid;
   } else if (snake.x >= canvas.width) {
     snake.x = 0;
   }
-
   if (snake.y < 0) {
     snake.y = canvas.height - grid;
   } else if (snake.y >= canvas.height) {
     snake.y = 0;
   }
-
   // Ajoute une nouvelle tête à la liste des cellules du serpent
   snake.cells.unshift({ x: snake.x, y: snake.y });
-
   // Retire la queue du serpent si nécessaire
   if (snake.cells.length > snake.maxCells) {
     snake.cells.pop();
   }
-
   // Dessine la pomme
   context.font = grid + "px Arial";
   context.fillText("🍎", apple.x, apple.y + grid - 4);
-
   // Dessine le serpent
   context.fillStyle = "gray";
   snake.cells.forEach(function (cell, index) {
     context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
-
     // Si le serpent mange la pomme
     if (cell.x === apple.x && cell.y === apple.y) {
       snake.maxCells++;
@@ -150,7 +107,6 @@ function loop() {
       apple.y = getRandomInt(0, 25) * grid;
       playEatingSound();
     }
-
     // Vérifie la collision du serpent avec lui-même
     for (var i = index + 1; i < snake.cells.length; i++) {
       if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
@@ -166,14 +122,22 @@ function loop() {
       }
     }
   });
-
   // Affiche le score
-  context.fillStyle = "black";
+  context.fillStyle = "white";
   context.font = "24px Sans-Serif";
   context.fillText("Score: " + snake.score, 10, 30);
 }
+document.getElementById("quitGame").addEventListener("click", quit);
 
-// Autres gestionnaires d'événements et fonctions associés ici ...
+// Quitter
+function quit() {
+    var confirmation = window.confirm("Êtes-vous sûr de vouloir quitter le jeu?");
+    
+    if (confirmation) {
+      window.location.href = 'index.html';
+    }
+  }
+  
 
 // Démarre la boucle principale du jeu
 requestAnimationFrame(loop);

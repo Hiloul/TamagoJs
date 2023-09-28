@@ -2,92 +2,101 @@
 /* Rsponsive Index.html */
 @media (max-width: 768px) {
   .navbar-left {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .navbar-logo {
-      margin-bottom: 10px;
+    margin-bottom: 10px;
   }
 
   .container {
-      margin: 20px auto;
+    margin: 20px auto;
   }
 
   .tamagotchi .name {
-      flex-direction: column;
+    flex-direction: column;
   }
 
-  .tamagotchi .name input, .tamagotchi .name button {
-      width: 100%;
-      margin: 5px 0;
+  .tamagotchi .name input,
+  .tamagotchi .name button {
+    width: 100%;
+    margin: 5px 0;
   }
 
   .controls {
-      flex-wrap: wrap;
-      justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 
   .controls button {
-      width: 45%;
-      margin: 5px 0;
+    width: 45%;
+    margin: 5px 0;
   }
 
   .choosePet {
-      flex-direction: column;
+    flex-direction: column;
   }
 
-  .choosePet select, .choosePet button {
-      width: 100%;
-      margin: 5px 0;
+  .choosePet select,
+  .choosePet button {
+    width: 100%;
+    margin: 5px 0;
   }
 
   #restartBtn {
-      width: 100%;
-      margin: 10px 0;
+    width: 100%;
+    margin: 10px 0;
   }
 
   .footer {
-      flex-direction: column;
+    flex-direction: column;
   }
 }
 
 /* Responsive snake.html */
-/* Pour les tablettes */
-@media (max-width: 768px) {
+/* Media Queries pour les appareils mobiles */
+@media only screen and (max-width: 767px) {
+  /* Cible les appareils avec une largeur d'écran jusqu'à 767px */
   canvas {
-      width: 90%;
-      height: auto;
-      margin: 1rem auto;
+    width: 90vw; /* Utilisez un pourcentage de la largeur de la fenêtre pour le canvas */
+    height: 90vw; /* Assurez-vous que le canvas reste carré */
+    margin: 1rem auto;
   }
-  button, .arrow {
-      padding: 5px 10px;
-      font-size: 14px;
-      margin: 5px;
+  button {
+    font-size: 0.8rem; /* Réduit la taille de la police pour les petits écrans */
+    padding: 8px 16px;
+    margin: 5px;
+  }
+  .arrow {
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
   }
   #arrow-controls {
-      flex-direction: column;
+    margin: 1rem 0;
   }
 }
 
 /* Pour les téléphones mobiles */
 @media (max-width: 480px) {
   body {
-      font-size: 12px;
+    font-size: 12px;
   }
   canvas {
-      width: 100%;
-      height: auto;
-      margin: 0.5rem auto;
-      border-width: 3px;
+    width: 100%;
+    height: auto;
+    margin: 0.5rem auto;
+    border-width: 3px;
   }
-  button, .arrow {
-      padding: 4px 8px;
-      font-size: 12px;
-      margin: 3px;
+  button,
+  .arrow {
+    padding: 4px 8px;
+    font-size: 12px;
+    margin: 3px;
   }
   #arrow-controls .arrow {
-      width: 40px;
-      height: 40px;
+    width: 40px;
+    height: 40px;
   }
 }

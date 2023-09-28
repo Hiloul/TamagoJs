@@ -1,7 +1,13 @@
 /* Styles généraux */
-body {
-    background-color: #f4f4f4;
-    font-family: 'Press Start 2P', cursive; /* une police pixelisée typique */
+  * {
+    user-select: none;
+  }
+  body {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    background-color: #f4c2c2; /* rose doux */
+    margin: 0;
+    padding: 0;
   }
   
   canvas {

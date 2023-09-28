@@ -253,7 +253,7 @@ body {
   background-color: #f4f4f4; /* Un fond gris clair, identique à la navbar */
   border-top: 2px solid #ddd;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-  position: fixed; /* Le footer sera fixé en bas de la page */
+  position: fixed;
   bottom: 0;
   width: 100%;
 }

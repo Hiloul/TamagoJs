@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <!-- CUSTOM STYLES -->
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="./css/snack-styles.css">
+    <link rel="stylesheet" href="./css/snake-styles.css">
     <link rel="stylesheet" href="./css/responsive.css">
     <title>Retro Gaming Js</title>
   </head>
@@ -27,13 +27,10 @@
       <img src="./assets/dogface.svg" alt="Logo" class="navbar-logo" />
       <span class="navbar-title">Retro Gaming Js</span>
     </div>
-    <a href="./snake.html">Snake</a>
+    <a href="./index.html">TamagoJs</a>
   </nav>
 
-<canvas width="600" height="600" id="game"></canvas>
-<button id="startGame">Démarrer le jeu</button>
-
-<button id="restartGame">Redémarrer</button>
+  <canvas width="400" height="400" id="game"></canvas>
 
 
 <div id="arrow-controls">
@@ -43,16 +40,19 @@
   <button id="arrow-down" class="arrow">&#9660;</button>
 </div>
 
-
-
+<button id="startGame">Démarrer le jeu</button>
+<button id="restartGame" style="display: none;">Redémarrer</button>
+<button id="quitGame" style="display: none;">Quitter</button>
 
 <footer class="footer">
   <div class="footer-content">
     <p>2023 ©Retro Gaming Js by HiloulDev. Tous droits réservés.</p>
   </div>
 </footer>
+
 <!-- Audio -->
 <audio id="appleSound" src="./assets/appleSound.wav"></audio>
-<script src="./js/snackScript.js"></script>
+<!-- Script -->
+<script src="./js/snakeScript.js"></script>
 </body>
 </html>	
