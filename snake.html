@@ -1,204 +1,58 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-  <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-  }
-
-  body {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin: 0;
-  font-family: 'DK Business As Usual', sans-serif;
-  background-image: url(https://fyre.cdn.sewest.net/siren/602bb297f34ffb001a20d6e3/background-3x-lnj-1z4-f.png?width=960);
-  background-repeat: no-repeat;
-  background-size: cover;   
-  }
-  nav{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: black;
-    opacity: 0.2;
-    width: 100%;
-    height: 60px; 
-  }
-  a{
-      text-decoration: none;
-      color: whitesmoke;
-      font-size: 1.5em;
-      margin: 5px;
-      
-  }
-  canvas {
-    margin-top: 50px;
-    border: 1px solid black;
-  }
-  footer{
-  text-align: center;
-}
-  </style>
-</head>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="./assets/dogface.svg" />
+    <!-- ICONES -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- POLICE -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- CUSTOM STYLES -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/snack-styles.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <title>Retro Gaming Js</title>
+  </head>
 <body>
-  <nav>
-    <a href="homepage.html">ACCUEIL</a>
-    <a href="projetpage.html">PROJETS</a>
-    <a href="contactpage.html">CONTACTS</a>
-</nav>
-
+  <nav class="navbar">
+    <div class="navbar-left">
+      <img src="./assets/dogface.svg" alt="Logo" class="navbar-logo" />
+      <span class="navbar-title">Retro Gaming Js</span>
+    </div>
+    <a href="./snake.html">Snake</a>
+  </nav>
 
 <canvas width="600" height="600" id="game"></canvas>
+<button id="startGame">Démarrer le jeu</button>
 
-<footer>
-  Mentions Legales
-  &COPY;Touts droits réservés
+<button id="restartGame">Redémarrer</button>
+
+
+<div id="arrow-controls">
+  <button id="arrow-up" class="arrow">&#9650;</button>
+  <button id="arrow-left" class="arrow">&#9664;</button>
+  <button id="arrow-right" class="arrow">&#9654;</button>
+  <button id="arrow-down" class="arrow">&#9660;</button>
+</div>
+
+
+
+
+<footer class="footer">
+  <div class="footer-content">
+    <p>2023 ©Retro Gaming Js by HiloulDev. Tous droits réservés.</p>
+  </div>
 </footer>
-<script>
-var canvas = document.getElementById('game');
-var context = canvas.getContext('2d');
-
-var grid = 16;
-var count = 0;
-
-var snake = {
-  x: 160,
-  y: 160,
-
-  // snake velocity. moves one grid length every frame in either the x or y direction
-  dx: grid,
-  dy: 0,
-
-  // keep track of all grids the snake body occupies
-  cells: [],
-
-  // length of the snake. grows when eating an apple
-  maxCells: 4
-};
-var apple = {
-  x: 320,
-  y: 320
-};
-
-// get random whole numbers in a specific range
-// @see https://stackoverflow.com/a/1527820/2124254
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-// game loop
-function loop() {
-  requestAnimationFrame(loop);
-
-  // slow game loop to 15 fps instead of 60 (60/15 = 4)
-  if (++count < 4) {
-    return;
-  }
-
-  count = 0;
-  context.clearRect(0,0,canvas.width,canvas.height);
-
-  // move snake by it's velocity
-  snake.x += snake.dx;
-  snake.y += snake.dy;
-
-  // wrap snake position horizontally on edge of screen
-  if (snake.x < 0) {
-    snake.x = canvas.width - grid;
-  }
-  else if (snake.x >= canvas.width) {
-    snake.x = 0;
-  }
-
-  // wrap snake position vertically on edge of screen
-  if (snake.y < 0) {
-    snake.y = canvas.height - grid;
-  }
-  else if (snake.y >= canvas.height) {
-    snake.y = 0;
-  }
-
-  // keep track of where snake has been. front of the array is always the head
-  snake.cells.unshift({x: snake.x, y: snake.y});
-
-  // remove cells as we move away from them
-  if (snake.cells.length > snake.maxCells) {
-    snake.cells.pop();
-  }
-
-  // draw apple
-  context.fillStyle = 'red';
-  context.fillRect(apple.x, apple.y, grid-1, grid-1);
-
-  // draw snake one cell at a time
-  context.fillStyle = 'gray';
-  snake.cells.forEach(function(cell, index) {
- 
-    // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is
-    context.fillRect(cell.x, cell.y, grid-1, grid-1);
-
-    // snake ate apple
-    if (cell.x === apple.x && cell.y === apple.y) {
-      snake.maxCells++;
-
-      // canvas is 400x400 which is 25x25 grids
-      apple.x = getRandomInt(0, 25) * grid;
-      apple.y = getRandomInt(0, 25) * grid;
-    }
-
-    // check collision with all cells after this one (modified bubble sort)
-    for (var i = index + 1; i < snake.cells.length; i++) {
-   
-      // snake occupies same space as a body part. reset game
-      if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-        snake.x = 160;
-        snake.y = 160;
-        snake.cells = [];
-        snake.maxCells = 4;
-        snake.dx = grid;
-        snake.dy = 0;
-
-        apple.x = getRandomInt(0, 25) * grid;
-        apple.y = getRandomInt(0, 25) * grid;
-      }
-    }
-  });
-}
-
-// listen to keyboard events to move the snake
-document.addEventListener('keydown', function(e) {
-  // prevent snake from backtracking on itself by checking that it's
-  // not already moving on the same axis (pressing left while moving
-  // left won't do anything, and pressing right while moving left
-  // shouldn't let you collide with your own body)
-
-  // left arrow key
-  if (e.which === 37 && snake.dx === 0) {
-    snake.dx = -grid;
-    snake.dy = 0;
-  }
-  // up arrow key
-  else if (e.which === 38 && snake.dy === 0) {
-    snake.dy = -grid;
-    snake.dx = 0;
-  }
-  // right arrow key
-  else if (e.which === 39 && snake.dx === 0) {
-    snake.dx = grid;
-    snake.dy = 0;
-  }
-  // down arrow key
-  else if (e.which === 40 && snake.dy === 0) {
-    snake.dy = grid;
-    snake.dx = 0;
-  }
-});
-
-// start the game
-requestAnimationFrame(loop);
-</script>
+<!-- Audio -->
+<audio id="appleSound" src="./assets/appleSound.wav"></audio>
+<script src="./js/snackScript.js"></script>
 </body>
 </html>	

@@ -1,6 +1,5 @@
-/* ... (vos styles actuels) ... */
-
 /* Responsive Styles */
+/* Rsponsive Index.html */
 @media (max-width: 768px) {
   .navbar-left {
       flex-direction: column;
@@ -50,5 +49,45 @@
 
   .footer {
       flex-direction: column;
+  }
+}
+
+/* Responsive snake.html */
+/* Pour les tablettes */
+@media (max-width: 768px) {
+  canvas {
+      width: 90%;
+      height: auto;
+      margin: 1rem auto;
+  }
+  button, .arrow {
+      padding: 5px 10px;
+      font-size: 14px;
+      margin: 5px;
+  }
+  #arrow-controls {
+      flex-direction: column;
+  }
+}
+
+/* Pour les téléphones mobiles */
+@media (max-width: 480px) {
+  body {
+      font-size: 12px;
+  }
+  canvas {
+      width: 100%;
+      height: auto;
+      margin: 0.5rem auto;
+      border-width: 3px;
+  }
+  button, .arrow {
+      padding: 4px 8px;
+      font-size: 12px;
+      margin: 3px;
+  }
+  #arrow-controls .arrow {
+      width: 40px;
+      height: 40px;
   }
 }

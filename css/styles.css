@@ -9,6 +9,7 @@ body {
   padding: 0;
 }
 .navbar {
+  font-family: 'Press Start 2P', cursive;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -244,6 +245,7 @@ body {
 }
 
 .footer {
+  font-family: 'Press Start 2P', cursive;
   display: flex;
   align-items: center;
   justify-content: center;
