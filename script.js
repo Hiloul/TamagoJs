@@ -11,37 +11,54 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function setPet() {
-  const petSelector = document.getElementById("petSelector");
-  const selectedPet = petSelector.options[petSelector.selectedIndex].value;
-
-  document.getElementById("pet").textContent = selectedPet;
-  document.querySelector(".choosePet").style.display = "none";
-}
-
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-function setName() {
-  const nameInput = document.getElementById("tamagotchiName");
-  const nameDisplay = document.getElementById("displayedName");
-
-  if (nameInput.value.trim()) {
-    let capitalized = capitalizeFirstLetter(nameInput.value.trim());
-    nameDisplay.textContent = capitalized;
-    nameInput.style.display = "none";
-    document.querySelector(".name button").style.display = "none";
-
-    // Montrer les actions et les statistiques
-    document.querySelector(".controls").style.display = "block";
-    document.querySelector(".stats").style.display = "block";
-
-    // Commencer le jeu dès que le Tamagotchi est nommé
-    lifeInterval = setInterval(decreaseStats, 1000);
-  } else {
-    alert("Veuillez entrer un nom valide !");
+    const petSelector = document.getElementById("petSelector");
+    const selectedPet = petSelector.options[petSelector.selectedIndex].value;
+  
+    document.getElementById("pet").textContent = selectedPet;
+    document.querySelector(".choosePet").style.display = "none";
+  
+    // Afficher la section de nomination une fois le pet choisi
+    document.querySelector(".name").style.display = "block";
   }
-}
+  
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  
+  function setName() {
+    const nameInput = document.getElementById("tamagotchiName");
+    const nameDisplay = document.getElementById("displayedName");
+  
+    if (nameInput.value.trim()) {
+      let capitalized = capitalizeFirstLetter(nameInput.value.trim());
+      nameDisplay.textContent = capitalized;
+      nameInput.style.display = "none";
+      document.querySelector(".name button").style.display = "none";
+  
+      // Montrer les actions et les statistiques
+      document.querySelector(".controls").style.display = "block";
+      document.querySelector(".stats").style.display = "block";
+  
+      // Commencer le jeu dès que le Tamagotchi est nommé
+      lifeInterval = setInterval(decreaseStats, 1000);
+    } else {
+      alert("Veuillez entrer un nom valide !");
+    }
+  }
+  
+  // Cachez initialement la section de nomination
+  document.addEventListener("DOMContentLoaded", function() {
+      document.querySelector(".name").style.display = "none";
+  });
+  
+  function playAlertSound() {
+    let audioElement = document.getElementById("alertSound");
+    audioElement.currentTime = 0; // Repart de zéro si le son est déjà en cours de lecture
+    audioElement.play();
+    setTimeout(() => {
+        audioElement.pause();
+    }, 1000); // Arrête le son après 3 secondes
+}  
 
 function checkForWarning() {
   const warningLimit = 20;
@@ -54,6 +71,7 @@ function checkForWarning() {
     cleanliness <= warningLimit
   ) {
     document.getElementById("warning").textContent = warningEmoji;
+    playAlertSound();
   } else {
     document.getElementById("warning").textContent = "";
   }
@@ -100,6 +118,7 @@ function decreaseStats() {
 
   if (hunger <= 0 || happiness <= 0 || health == 0 || cleanliness == 0) {
     document.getElementById("pet").textContent = "💀";
+    playLooseSound();
     clearInterval(lifeInterval);
     lifeInterval = null;
     let tamagotchiName = document.getElementById("displayedName").textContent;
@@ -119,12 +138,31 @@ function updateStats() {
   checkForWarning();
 }
 
+function playEatingSound() {
+    let audioElement = document.getElementById("eatingSound");
+    audioElement.currentTime = 0; // Repart de zéro si le son est déjà en cours de lecture
+    audioElement.play();
+    setTimeout(() => {
+        audioElement.pause();
+    }, 3000); // Arrête le son après 3 secondes
+}
+
 function feed() {
-  let randomIncrease = Math.floor(Math.random() * 11) + 10;
-  hunger += randomIncrease;
-  if (hunger > 100) hunger = 100;
-  animatePet("🥪", "shake");
-  updateStats();
+    let randomIncrease = Math.floor(Math.random() * 11) + 10;
+    hunger += randomIncrease;
+    if (hunger > 100) hunger = 100;
+    animatePet("🥪", "shake");
+    playEatingSound();
+    updateStats();
+}
+
+function playingSound() {
+    let audioElement = document.getElementById("playingSound");
+    audioElement.currentTime = 0;
+    audioElement.play();
+    setTimeout(() => {
+        audioElement.pause();
+    }, 3000);
 }
 
 function play() {
@@ -132,7 +170,17 @@ function play() {
   happiness += randomIncrease;
   if (happiness > 100) happiness = 100;
   animatePet("🪀", "bouncing");
+  playingSound();
   updateStats();
+}
+
+function playHealingSound() {
+    let audioElement = document.getElementById("healingSound");
+    audioElement.currentTime = 0; // Repart de zéro si le son est déjà en cours de lecture
+    audioElement.play();
+    setTimeout(() => {
+        audioElement.pause();
+    }, 3000); // Arrête le son après 3 secondes
 }
 
 function heal() {
@@ -140,7 +188,17 @@ function heal() {
   health += randomIncrease;
   if (health > 100) health = 100;
   animatePet("🚑", "heartbeat");
+  playHealingSound();
   updateStats();
+}
+
+function playWashingSound() {
+    let audioElement = document.getElementById("washingSound");
+    audioElement.currentTime = 0;
+    audioElement.play();
+    setTimeout(() => {
+        audioElement.pause();
+    }, 3000);
 }
 
 function wash() {
@@ -148,6 +206,7 @@ function wash() {
   cleanliness += randomIncrease;
   if (cleanliness > 100) cleanliness = 100;
   animatePet("🛀", "bouncing");
+  playWashingSound();
   updateStats();
 }
 
@@ -160,6 +219,16 @@ function animatePet(emoji, animationClass) {
     petElem.textContent = originalPetEmoji;
     petElem.classList.remove(animationClass);
   }, 3000);
+}
+
+
+function playLooseSound() {
+    let audioElement = document.getElementById("looseSound");
+    audioElement.currentTime = 0;
+    audioElement.play();
+    setTimeout(() => {
+        audioElement.pause();
+    }, 1000);
 }
 
 function quit() {
@@ -181,5 +250,6 @@ function quit() {
     // Afficher le bouton Redémarrer après avoir quitté
     document.getElementById("restartBtn").style.display = "block";
   }
+  playLooseSound();
   updateStats();
 }

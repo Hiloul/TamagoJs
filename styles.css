@@ -6,6 +6,31 @@ body {
     margin: 0;
     padding: 0;
 }
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f4f4f4; /* Un fond gris clair */
+    border-bottom: 2px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    width: 32px; /* Vous pouvez ajuster cette taille si nécessaire */
+    height: 32px;
+    margin-right: 10px;
+}
+
+.navbar-title {
+    font-size: 24px;
+    font-weight: bold;
+}
 
 .container {
     max-width: 320px;
@@ -216,4 +241,22 @@ body {
 #restartBtn:active {
     background-color: #D980AB; /* Rose encore plus foncé lorsqu'on clique dessus */
     transform: scale(0.98); /* Le bouton se rétrécit légèrement lorsqu'on clique dessus */
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+    background-color: #f4f4f4; /* Un fond gris clair, identique à la navbar */
+    border-top: 2px solid #ddd;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Le footer sera fixé en bas de la page */
+    bottom: 0; 
+    width: 100%; 
+}
+
+.footer-content p {
+    margin: 0; 
+    color: #333;
 }
