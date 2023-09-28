@@ -11,54 +11,54 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function setPet() {
-    const petSelector = document.getElementById("petSelector");
-    const selectedPet = petSelector.options[petSelector.selectedIndex].value;
-  
-    document.getElementById("pet").textContent = selectedPet;
-    document.querySelector(".choosePet").style.display = "none";
-  
-    // Afficher la section de nomination une fois le pet choisi
-    document.querySelector(".name").style.display = "block";
+  const petSelector = document.getElementById("petSelector");
+  const selectedPet = petSelector.options[petSelector.selectedIndex].value;
+
+  document.getElementById("pet").textContent = selectedPet;
+  document.querySelector(".choosePet").style.display = "none";
+
+  // Afficher la section de nomination une fois le pet choisi
+  document.querySelector(".name").style.display = "block";
+}
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function setName() {
+  const nameInput = document.getElementById("tamagotchiName");
+  const nameDisplay = document.getElementById("displayedName");
+
+  if (nameInput.value.trim()) {
+    let capitalized = capitalizeFirstLetter(nameInput.value.trim());
+    nameDisplay.textContent = capitalized;
+    nameInput.style.display = "none";
+    document.querySelector(".name button").style.display = "none";
+
+    // Montrer les actions et les statistiques
+    document.querySelector(".controls").style.display = "block";
+    document.querySelector(".stats").style.display = "block";
+
+    // LEs stat evoluent toute les 5 seconde quand on joue pas
+    lifeInterval = setInterval(decreaseStats, 5000);
+  } else {
+    alert("Veuillez entrer un nom valide !");
   }
-  
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-  
-  function setName() {
-    const nameInput = document.getElementById("tamagotchiName");
-    const nameDisplay = document.getElementById("displayedName");
-  
-    if (nameInput.value.trim()) {
-      let capitalized = capitalizeFirstLetter(nameInput.value.trim());
-      nameDisplay.textContent = capitalized;
-      nameInput.style.display = "none";
-      document.querySelector(".name button").style.display = "none";
-  
-      // Montrer les actions et les statistiques
-      document.querySelector(".controls").style.display = "block";
-      document.querySelector(".stats").style.display = "block";
-  
-      // LEs stat evoluent toute les 5 seconde quand on joue pas
-      lifeInterval = setInterval(decreaseStats, 5000);
-    } else {
-      alert("Veuillez entrer un nom valide !");
-    }
-  }
-  
-  // Cachez initialement la section de nomination
-  document.addEventListener("DOMContentLoaded", function() {
-      document.querySelector(".name").style.display = "none";
-  });
-  
-  function playAlertSound() {
-    let audioElement = document.getElementById("alertSound");
-    audioElement.currentTime = 0; // Repart de zéro si le son est déjà en cours de lecture
-    audioElement.play();
-    setTimeout(() => {
-        audioElement.pause();
-    }, 1000); // Arrête le son après 3 secondes
-}  
+}
+
+// Cachez initialement la section de nomination
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelector(".name").style.display = "none";
+});
+
+//   function playAlertSound() {
+//     let audioElement = document.getElementById("alertSound");
+//     audioElement.currentTime = 0; // Repart de zéro si le son est déjà en cours de lecture
+//     audioElement.play();
+//     setTimeout(() => {
+//         audioElement.pause();
+//     }, 1000); // Arrête le son après 3 secondes
+// }
 
 function checkForWarning() {
   const warningLimit = 20;
@@ -71,7 +71,7 @@ function checkForWarning() {
     cleanliness <= warningLimit
   ) {
     document.getElementById("warning").textContent = warningEmoji;
-    playAlertSound();
+    // playAlertSound();
   } else {
     document.getElementById("warning").textContent = "";
   }
@@ -139,30 +139,30 @@ function updateStats() {
 }
 
 function playEatingSound() {
-    let audioElement = document.getElementById("eatingSound");
-    audioElement.currentTime = 0; // Repart de zéro si le son est déjà en cours de lecture
-    audioElement.play();
-    setTimeout(() => {
-        audioElement.pause();
-    }, 3000); // Arrête le son après 3 secondes
+  let audioElement = document.getElementById("eatingSound");
+  audioElement.currentTime = 0; // Repart de zéro si le son est déjà en cours de lecture
+  audioElement.play();
+  setTimeout(() => {
+    audioElement.pause();
+  }, 3000); // Arrête le son après 3 secondes
 }
 
 function feed() {
-    let randomIncrease = Math.floor(Math.random() * 11) + 10;
-    hunger += randomIncrease;
-    if (hunger > 100) hunger = 100;
-    animatePet("🥪", "shake");
-    playEatingSound();
-    updateStats();
+  let randomIncrease = Math.floor(Math.random() * 11) + 10;
+  hunger += randomIncrease;
+  if (hunger > 100) hunger = 100;
+  animatePet("🥪", "shake");
+  playEatingSound();
+  updateStats();
 }
 
 function playingSound() {
-    let audioElement = document.getElementById("playingSound");
-    audioElement.currentTime = 0;
-    audioElement.play();
-    setTimeout(() => {
-        audioElement.pause();
-    }, 3000);
+  let audioElement = document.getElementById("playingSound");
+  audioElement.currentTime = 0;
+  audioElement.play();
+  setTimeout(() => {
+    audioElement.pause();
+  }, 3000);
 }
 
 function play() {
@@ -175,12 +175,12 @@ function play() {
 }
 
 function playHealingSound() {
-    let audioElement = document.getElementById("healingSound");
-    audioElement.currentTime = 0; // Repart de zéro si le son est déjà en cours de lecture
-    audioElement.play();
-    setTimeout(() => {
-        audioElement.pause();
-    }, 3000); // Arrête le son après 3 secondes
+  let audioElement = document.getElementById("healingSound");
+  audioElement.currentTime = 0; // Repart de zéro si le son est déjà en cours de lecture
+  audioElement.play();
+  setTimeout(() => {
+    audioElement.pause();
+  }, 3000); // Arrête le son après 3 secondes
 }
 
 function heal() {
@@ -193,12 +193,12 @@ function heal() {
 }
 
 function playWashingSound() {
-    let audioElement = document.getElementById("washingSound");
-    audioElement.currentTime = 0;
-    audioElement.play();
-    setTimeout(() => {
-        audioElement.pause();
-    }, 3000);
+  let audioElement = document.getElementById("washingSound");
+  audioElement.currentTime = 0;
+  audioElement.play();
+  setTimeout(() => {
+    audioElement.pause();
+  }, 3000);
 }
 
 function wash() {
@@ -221,14 +221,13 @@ function animatePet(emoji, animationClass) {
   }, 3000);
 }
 
-
 function playLooseSound() {
-    let audioElement = document.getElementById("looseSound");
-    audioElement.currentTime = 0;
-    audioElement.play();
-    setTimeout(() => {
-        audioElement.pause();
-    }, 1000);
+  let audioElement = document.getElementById("looseSound");
+  audioElement.currentTime = 0;
+  audioElement.play();
+  setTimeout(() => {
+    audioElement.pause();
+  }, 1000);
 }
 
 function quit() {
