@@ -1,0 +1,54 @@
+/* ... (vos styles actuels) ... */
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar-left {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .navbar-logo {
+      margin-bottom: 10px;
+  }
+
+  .container {
+      margin: 20px auto;
+  }
+
+  .tamagotchi .name {
+      flex-direction: column;
+  }
+
+  .tamagotchi .name input, .tamagotchi .name button {
+      width: 100%;
+      margin: 5px 0;
+  }
+
+  .controls {
+      flex-wrap: wrap;
+      justify-content: space-around;
+  }
+
+  .controls button {
+      width: 45%;
+      margin: 5px 0;
+  }
+
+  .choosePet {
+      flex-direction: column;
+  }
+
+  .choosePet select, .choosePet button {
+      width: 100%;
+      margin: 5px 0;
+  }
+
+  #restartBtn {
+      width: 100%;
+      margin: 10px 0;
+  }
+
+  .footer {
+      flex-direction: column;
+  }
+}
