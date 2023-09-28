@@ -8,8 +8,8 @@ var count = 0;
 
 // Initialisation de l'objet serpent
 var snake = {
-  x: 192,
-  y: 192,
+  x: 176,
+  y: 176,
   dx: grid,
   dy: 0,
   cells: [],
@@ -19,8 +19,8 @@ var snake = {
 
 // Initialisation de l'objet pomme
 var apple = {
-  x: 256,
-  y: 256,
+  x: 224,
+  y: 224,
 };
 
 // Cette fonction détermine combien de frames nous devons attendre avant de mettre à jour le jeu.
