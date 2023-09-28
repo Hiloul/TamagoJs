@@ -39,8 +39,8 @@ function setPet() {
       document.querySelector(".controls").style.display = "block";
       document.querySelector(".stats").style.display = "block";
   
-      // Commencer le jeu dès que le Tamagotchi est nommé
-      lifeInterval = setInterval(decreaseStats, 1000);
+      // LEs stat evoluent toute les 5 seconde quand on joue pas
+      lifeInterval = setInterval(decreaseStats, 5000);
     } else {
       alert("Veuillez entrer un nom valide !");
     }
