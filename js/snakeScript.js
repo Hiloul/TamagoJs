@@ -96,7 +96,7 @@ function loop() {
   context.font = grid + "px Arial";
   context.fillText("🍎", apple.x, apple.y + grid - 4);
   // Dessine le serpent
-  context.fillStyle = "gray";
+  context.fillStyle = "#0a5c0a";
   snake.cells.forEach(function (cell, index) {
     context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
     // Si le serpent mange la pomme
@@ -160,17 +160,17 @@ document.addEventListener("keydown", function (e) {
 });
 
 // Gestion des événements de clic pour déplacer le serpent avec les boutons
-document.getElementById("arrow-up").addEventListener("click", function () {
-  if (snake.dy === 0) {
-    snake.dy = -grid;
-    snake.dx = 0;
-  }
-});
-
 document.getElementById("arrow-left").addEventListener("click", function () {
   if (snake.dx === 0) {
     snake.dx = -grid;
     snake.dy = 0;
+  }
+});
+
+document.getElementById("arrow-up").addEventListener("click", function () {
+  if (snake.dy === 0) {
+    snake.dy = -grid;
+    snake.dx = 0;
   }
 });
 
