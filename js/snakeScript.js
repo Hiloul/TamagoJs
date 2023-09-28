@@ -198,6 +198,43 @@ document.getElementById("restartGame").addEventListener("click", function () {
   snake.dy = 0;
   snake.score = 0;
 
+  // Gestion mouvements avec tactile
+  let touchStartX = 0;
+let touchStartY = 0;
+
+canvas.addEventListener('touchstart', function(e) {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+}, false);
+
+canvas.addEventListener('touchend', function(e) {
+  let touchEndX = e.changedTouches[0].clientX;
+  let touchEndY = e.changedTouches[0].clientY;
+  let deltaX = touchEndX - touchStartX;
+  let deltaY = touchEndY - touchStartY;
+
+  if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    // Mouvement horizontal
+    if (deltaX > 0 && snake.dx === 0) { // Déplacement vers la droite
+      snake.dx = grid;
+      snake.dy = 0;
+    } else if (deltaX < 0 && snake.dx === 0) { // Déplacement vers la gauche
+      snake.dx = -grid;
+      snake.dy = 0;
+    }
+  } else {
+    // Mouvement vertical
+    if (deltaY > 0 && snake.dy === 0) { // Déplacement vers le bas
+      snake.dx = 0;
+      snake.dy = grid;
+    } else if (deltaY < 0 && snake.dy === 0) { // Déplacement vers le haut
+      snake.dx = 0;
+      snake.dy = -grid;
+    }
+  }
+}, false);
+
+
   // Re-positionnez la pomme
   apple.x = getRandomInt(0, 25) * grid;
   apple.y = getRandomInt(0, 25) * grid;
