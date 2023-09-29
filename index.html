@@ -93,5 +93,14 @@
     <audio id="looseSound" src="./assets/looseSound.mp3"></audio>
     <audio id="alertSound" src="./assets/alertSound.mp3"></audio>
     <script src="./js/script.js"></script>
+    <script>document.querySelector(".dropbtn").addEventListener("click", function() {
+      var dropdownContent = document.querySelector(".dropdown-content");
+      if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+      } else {
+          dropdownContent.style.display = "block";
+      }
+    });
+    </script>
   </body>
 </html>

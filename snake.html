@@ -60,5 +60,14 @@
 <audio id="appleSound" src="./assets/appleSound.mp3"></audio>
 <!-- Script -->
 <script src="./js/snakeScript.js"></script>
+<script>document.querySelector(".dropbtn").addEventListener("click", function() {
+  var dropdownContent = document.querySelector(".dropdown-content");
+  if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+  } else {
+      dropdownContent.style.display = "block";
+  }
+});
+</script>
 </body>
 </html>	
