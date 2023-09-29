@@ -26,14 +26,8 @@
         <img src="./assets/dogface.svg" alt="Logo" class="navbar-logo" />
         <span class="navbar-title">Retro Gaming Js</span>
       </div>
-      <div class="dropdown">
-        <button class="dropbtn">Menu</button>
-        <div class="dropdown-content">
-          <a href="./index.html">Tamagotchi</a>
-          <a href="./snake.html">Snake</a>
-          <a href="./pacman.html">Pacman</a>
-        </div>
-      </div>
+      <a href="./snake.html">Snake</a>
+    </nav>
 
     <div class="container">
       <div class="tamagotchi">
@@ -93,14 +87,5 @@
     <audio id="looseSound" src="./assets/looseSound.mp3"></audio>
     <audio id="alertSound" src="./assets/alertSound.mp3"></audio>
     <script src="./js/script.js"></script>
-    <script>document.querySelector(".dropbtn").addEventListener("click", function() {
-      var dropdownContent = document.querySelector(".dropdown-content");
-      if (dropdownContent.style.display === "block") {
-          dropdownContent.style.display = "none";
-      } else {
-          dropdownContent.style.display = "block";
-      }
-    });
-    </script>
   </body>
 </html>
