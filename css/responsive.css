@@ -57,14 +57,13 @@
 /* Responsive snake.html */
 /* Media Queries pour les appareils mobiles */
 @media only screen and (max-width: 768px) {
-  /* Cible les appareils avec une largeur d'écran jusqu'à 767px */
   canvas {
-    width: 90vw; /* Utilisez un pourcentage de la largeur de la fenêtre pour le canvas */
-    height: 90vw; /* Assurez-vous que le canvas reste carré */
+    width: 90vw;
+    height: 90vw;
     margin: 1rem auto;
   }
   button {
-    font-size: 0.8rem; /* Réduit la taille de la police pour les petits écrans */
+    font-size: 0.8rem;
     padding: 8px 16px;
     margin: 5px;
   }
@@ -98,5 +97,16 @@
   #arrow-controls .arrow {
     width: 40px;
     height: 40px;
+  }
+}
+
+/* Media Queries pour le pacman*/
+@media (max-width: 400px) {
+  #gameContainer {
+      width: 90%;
+  }
+  button {
+      padding: 0.3rem 0.6rem;
+      font-size: 10px;
   }
 }

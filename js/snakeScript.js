@@ -138,7 +138,6 @@ function quit() {
     }
   }
   
-
 // Démarre la boucle principale du jeu
 requestAnimationFrame(loop);
 

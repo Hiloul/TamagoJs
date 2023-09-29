@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="./assets/dogface.svg" />
+    <!-- ICONES -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- POLICE -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CUSTOM STYLES -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/pacman-styles.css" />
+    <link rel="stylesheet" href="./css/responsive.css" />
+    <title>Retro Gaming Js</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-left">
+        <img src="./assets/dogface.svg" alt="Logo" class="navbar-logo" />
+        <span class="navbar-title">Retro Gaming Js</span>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Menu</button>
+        <div class="dropdown-content">
+          <a href="./index.html">Tamagotchi</a>
+          <a href="./snake.html">Snake</a>
+          <a href="./pacman.html">Pacman</a>
+        </div>
+      </div>
+      
+    </nav>
+
+    <div id="gameContainer" style="display: none;">
+      <canvas id="gameCanvas" width="300" height="300"></canvas> 
+      <!-- Ne pas oublier de reinitialiser le score pour la fonction redemarrer -->
+      <button id="restartGame" style="display: none;">Redémarrer</button>
+      <button id="quitGame" style="display: none;">Quitter</button>
+    </div>
+
+    <button id="startButton">Démarrer</button>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <p>2023 ©Retro Gaming Js by HiloulDev. Tous droits réservés.</p>
+      </div>
+    </footer>
+
+    <!-- Audio -->
+    <!-- <audio id="appleSound" src="./assets/appleSound.mp3"></audio> -->
+    <!-- Script -->
+    <script src="./js/pacmanScript.js"></script>
+  </body>
+</html>

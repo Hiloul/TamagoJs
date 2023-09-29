@@ -1,12 +1,12 @@
 * {
-  user-select: none;
+  user-select: none
 }
 body {
   font-family: "Arial", sans-serif;
   text-align: center;
-  background-color: #f4c2c2; /* rose doux */
+  background-color: #f4c2c2;
   margin: 0;
-  padding: 0;
+  padding: 0
 }
 .navbar {
   font-family: 'Press Start 2P', cursive;
@@ -14,35 +14,85 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color: #f4f4f4; /* Un fond gris clair */
+  background-color: #f4f4f4;
   border-bottom: 2px solid #ddd;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1)
 }
 
 .navbar-left {
   display: flex;
-  align-items: center;
+  align-items: center
 }
 
 .navbar-logo {
-  width: 32px; /* Vous pouvez ajuster cette taille si nécessaire */
+  width: 32px;
   height: 32px;
-  margin-right: 10px;
+  margin-right: 10px
 }
 
 .navbar-title {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: bold
+}
+
+
+/* Style pour le bouton du menu déroulant */
+.dropbtn {
+  background-color: black;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Le conteneur div - nécessaire pour positionner le menu déroulant */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Contenu du menu déroulant (caché par défaut) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;  /* Position à droite */
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Lien à l'intérieur du menu déroulant */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Modifier la couleur de fond des liens du menu déroulant au survol */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Afficher le menu déroulant au survol */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #000000a5;
 }
 
 .container {
   max-width: 320px;
   margin: 50px auto;
   padding: 20px;
-  background-color: #fff5e1; /* jaune doux */
+  background-color: #fff5e1;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  border: 3px dashed #ffb6b6; /* rose clair */
+  border: 3px dashed #ffb6b6
 }
 
 .tamagotchi .name {
@@ -50,80 +100,80 @@ body {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 20px
 }
 
 .tamagotchi .name input {
   padding: 5px;
   border-radius: 5px;
-  border: 1px solid #ffb6b6; /* rose clair */
+  border: 1px solid #ffb6b6
 }
 
 .tamagotchi .name button {
   padding: 5px 15px;
   border-radius: 5px;
-  background-color: #ffb6b6; /* rose clair */
+  background-color: #ffb6b6;
   color: white;
   border: none;
-  cursor: pointer;
+  cursor: pointer
 }
 
 .tamagotchi .name button:hover {
-  background-color: #f49797; /* rose un peu foncé */
+  background-color: #f49797
 }
 
 #displayedName {
   font-size: 24px;
   margin-top: 20px;
   margin-bottom: 30px;
-  color: #ff69b4; /* rose vif */
+  color: #ff69b4
 }
 
 #pet {
   font-size: 70px;
-  margin-bottom: 20px;
+  margin-bottom: 20px
 }
 
 .stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 20px
 }
 
 .stats p {
-  background-color: #ffdab9; /* pêche */
+  background-color: #ffdab9;
   padding: 5px 10px;
   border-radius: 10px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  color: #ff69b4; /* rose vif */
+  color: #ff69b4
 }
 
 .controls button {
   padding: 10px 20px;
   border: none;
-  background-color: #fff5e1; /* jaune doux */
+  background-color: #fff5e1;
   border-radius: 50%;
   margin: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   font-size: 24px;
-  cursor: pointer;
+  cursor: pointer
 }
 
 .controls button:hover {
-  background-color: #ffe4b5; /* moccasin */
+  background-color: #ffe4b5
 }
 
 .choosePet {
   margin: 20px;
   padding: 10px 20px;
-  background-color: #ffe3e1; /* Fond rose pastel */
+  background-color: #ffe3e1;
   border-radius: 20px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: wrap
 }
 
 .choosePet select,
@@ -133,22 +183,22 @@ body {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease
 }
 
 .choosePet select {
-  background-color: #d8f3f3; /* Fond bleu pastel */
-  color: #5c4b51;
+  background-color: #d8f3f3;
+  color: #5c4b51
 }
 
 .choosePet button {
-  background-color: #ffdbd8; /* Fond orangé pastel */
+  background-color: #ffdbd8;
   color: #5c4b51;
-  border: 1px solid #d8c3c1;
+  border: 1px solid #d8c3c1
 }
 
 .choosePet button:hover {
-  background-color: #ffccc7;
+  background-color: #ffccc7
 }
 
 @keyframes bounce {
@@ -168,7 +218,7 @@ body {
 }
 
 .bouncing {
-  animation: bounce 1s infinite;
+  animation: bounce 1s infinite
 }
 
 @keyframes heartbeat {
@@ -190,7 +240,7 @@ body {
 }
 
 .heartbeat {
-  animation: heartbeat 1s infinite;
+  animation: heartbeat 1s infinite
 }
 
 @keyframes shake {
@@ -214,34 +264,34 @@ body {
 }
 
 .shake {
-  animation: shake 1.5s;
+  animation: shake 1.5s
 }
 
 #restartBtn {
-  display: none; /* Il sera masqué au début et s'affichera uniquement lorsque nécessaire */
+  display: none;
   font-size: 1.2em;
   padding: 10px 20px;
-  background-color: #fed7e2; /* Rose doux */
+  background-color: #fed7e2;
   border: none;
   border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  margin-top: 20px; /* Espace au-dessus du bouton pour qu'il ne soit pas trop proche des autres éléments */
+  margin-top: 20px
 }
 
 #restartBtn:hover {
-  background-color: #fbb6ce; /* Rose un peu plus foncé lorsqu'on survole */
+  background-color: #fbb6ce;
   transform: scale(
     1.05
-  ); /* Le bouton s'agrandit légèrement lorsqu'on survole */
+  )
 }
 
 #restartBtn:active {
-  background-color: #d980ab; /* Rose encore plus foncé lorsqu'on clique dessus */
+  background-color: #d980ab;
   transform: scale(
     0.98
-  ); /* Le bouton se rétrécit légèrement lorsqu'on clique dessus */
+  )
 }
 
 .footer {
@@ -250,15 +300,15 @@ body {
   align-items: center;
   justify-content: center;
   padding: 15px 20px;
-  background-color: #f4f4f4; /* Un fond gris clair, identique à la navbar */
+  background-color: #f4f4f4;
   border-top: 2px solid #ddd;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 100%
 }
 
 .footer-content p {
   margin: 0;
-  color: #333;
+  color: #333
 }
