@@ -1,30 +1,4 @@
-/* Responsive Styles */
-/* Quand la largeur de l'écran est inférieure ou égale à 768px */
-/* @media only screen and (max-width: 768px) {
-  /* Stack le contenu de la navbar verticalement */
-  /* .navbar-left, .dropdown, .navbar a {
-      display: block;
-      text-align: center;
-      width: 100%;
-      margin: 5px 0;
-  } */
-
-  /* Cache le contenu du menu déroulant par défaut */
-  /* .dropdown-content {
-      display: none;
-      position: static;
-      min-width: 100%;
-      box-shadow: none;
-  } */
-
-  /* Montre le menu déroulant lorsqu'on clique sur le bouton 'Menu' */
-  /* .dropdown:hover .dropdown-content {
-      display: block;
-  }
-} */ 
-
-
-/* Rsponsive Index.html */
+/* Index.html */
 @media (max-width: 768px) {
   .navbar-left {
     flex-direction: column;
