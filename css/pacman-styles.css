@@ -1,0 +1,32 @@
+/* Styles généraux */
+#gameContainer {
+    position: relative;
+    margin: 2rem auto;
+    width: 300px; 
+    border: 3px solid yellow
+}
+
+#gameCanvas {
+    display: block;
+    background-color: rgb(6, 6, 58);
+    margin: 0 auto;
+    width: 100%;
+    height: auto
+}
+
+button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #222;
+    color: #FFF;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px
+}
+
+button:hover {background-color: #444}
+
+button:active {background-color: #666}
+  
